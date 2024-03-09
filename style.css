@@ -81,6 +81,17 @@ input[type="button"]{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+#div-audio {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+}
+
+#div-audio > button {   
+    height: 50px;
+    width: 60px;
+}
+
 #casa1,
 #casa2,
 #casa3,
