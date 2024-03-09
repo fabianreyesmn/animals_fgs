@@ -77,8 +77,10 @@ input[type="button"]{
     background-color: rgba(205, 247, 156, 0.788);
 }
 
-.container-name{
+.container-name p{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    color: rgb(66, 39, 22);
 }
 
 #div-audio {
