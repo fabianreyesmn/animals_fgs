@@ -1,3 +1,5 @@
+var inicio = new Date();
+
 var jugador=localStorage.getItem("jugador");
 jugador=JSON.parse(jugador);
 
@@ -66,6 +68,46 @@ function soltado(e){
     lienzo.drawImage(elemento, posX, posY);
 
     elemento.style.visibility = 'hidden';
+}
+
+function calcularTiempo(){
+    var fin = new Date();
+    var tiempo = (fin-inicio)/1000;
+
+    var jugador = localStorage.getItem("jugador");
+    jugador = JSON.parse(jugador);
+
+    //Actualizar el tiempo en caso de que sea mejor del anterior
+    if(tiempo < jugador.tiempo){
+        var usuarios = localStorage.getItem("usuarios");
+        usuarios = JSON.parse(usuarios);
+
+        var usuariosAux;
+        var usuarioAux;
+
+        for(var i in usuarios){
+            var usuario = JSON.parse(usuarios[i]);
+
+            if(jugador.nombre !== usuario.nombre){
+                var usuarioAux = JSON.stringify({ //El método stringify convierte un valor a notación JSON
+                    nombre:usuario.nombre, 
+                    puntaje:usuario.puntaje,
+                    tiempo:usuario.tiempo
+                });
+                usuariosAux.push(usuarioAux);
+            }
+            else{
+                var usuarioAux = JSON.stringify({ //El método stringify convierte un valor a notación JSON
+                    nombre:jugador.nombre, 
+                    puntaje:jugador.puntaje,
+                    tiempo:tiempo
+                });
+                usuariosAux.push(usuarioAux);
+            }
+        }
+        localStorage.removeItem("usuarios");
+        localStorage.setItem("usuarios", usuariosAux);
+    }
 }
 
 window.onload = function(){
