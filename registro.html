@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
-    <title>Pantalla de Registro</title>
+    <title>Mundo Salvaje: Misión Selva</title>
 </head>
-<body>
+<body id="registro">
     <div>
-        <label for="">Ingresa tu nombre: </label>
-        <input type="text" id="nombre">
-        <p id="mensajeError"></p>
+        <div class="container-name">
+            <label for="">¿Cómo te llamas?</label>
+            <input type="text" id="nombre">
+            <p id="mensajeError"></p>
+        </div>
 
-        <input type="button" value="Comenzar" onclick="registrar()">
+        <div class="centrar-botones">
+            <input type="button" value="Comenzar" onclick="registrar()">
+        </div>
     </div>
 </body>
 </html>

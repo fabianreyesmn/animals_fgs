@@ -2,15 +2,21 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Pantalla de Inicio</title>
+    <title>Mundo Salvaje: Misión Selva</title>
 </head>
 <body id="inicio">
-    <h1>Pantalla de Inicio</h1>
-    <h2>Nombre del Juego</h2>
-    <h2>Logotipo</h2>
-    <input type="button" value="Continuar" onclick="capturar()">
+    <div class="brand">
+        <img src="images/logo.png" alt="Logo MS">
+        <h2>Vive la gran aventura de guiar a los animales a su hogar <br> 
+            en Mundo Salvaje: Misión Selva</h2>
+    </div>
+    <div class="centrar-botones">
+        <input type="button" value="Entrar" onclick="capturar()">
+        <input type="button" value="Puntajes" onclick="capturar()">
+        <input type="button" value="Créditos" onclick="capturar()">
+    </div>
 
     <script>
         function capturar(){
