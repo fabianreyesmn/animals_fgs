@@ -27,7 +27,7 @@ function juego(){
     }
 
     //Ayuda
-    
+    //Prueba de Cambio
     soltar = document.getElementById('casa6');
     lienzo = soltar.getContext('2d');
     soltar.addEventListener('dragenter', eventoEnter, false);
