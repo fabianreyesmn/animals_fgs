@@ -26,7 +26,8 @@ function juego(){
         imagenesAnimales[ escenarios[i] ].addEventListener('dragend', finalizado, false);
     }
 
-    // Ayuda
+    //Ayuda
+    
     soltar = document.getElementById('casa6');
     lienzo = soltar.getContext('2d');
     soltar.addEventListener('dragenter', eventoEnter, false);
