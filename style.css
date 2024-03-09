@@ -44,6 +44,13 @@ input[type="button"]{
 
 }
 
+#registro{
+    background: url("images/bg_registro.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 .container-name{
     display: flex;
     flex-direction: column;
@@ -51,11 +58,14 @@ input[type="button"]{
     justify-content: center;
     row-gap: 30px;
     height: 80vh;
+    padding-top: 100px;
+    box-sizing: border-box;
 }
 
 .container-name label{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 2.5rem;
+    font-weight: bold;
 }
 
 .container-name input{
@@ -63,7 +73,8 @@ input[type="button"]{
     font-size: 3rem;
     text-align: center;
     border-radius: 8px;
-    border: 1px solid rgb(190, 190, 190);
+    border: 1px solid rgb(145, 145, 145);
+    background-color: rgba(205, 247, 156, 0.788);
 }
 
 .container-name{
