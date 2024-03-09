@@ -1,0 +1,76 @@
+#inicio{
+    background: url("images/bg_inicio.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#casa1,
+#casa2,
+#casa3,
+#casa4,
+#casa5,
+#casa6,
+#casa7,
+#casa8,
+#casa9,
+#animal1,
+#animal2,
+#animal3,
+#animal4,
+#animal5,
+#animal6,
+#animal7,
+#animal8,
+#animal9 {
+    display: none;
+}
+
+#casa1,
+#casa2,
+#casa3,
+#casa4,
+#casa5,
+#casa6,
+#casa7,
+#casa8,
+#casa9 {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#casa1 {
+    background-image: url(images/casa1.png);
+}
+
+#casa2 {
+    background-image: url(images/casa2.png);
+}
+
+#casa3 {
+    background-image: url(images/casa3.png);
+}
+
+#casa4 {
+    background-image: url(images/casa4.png);
+}
+
+#casa5 {
+    background-image: url(images/casa5.png);
+}
+
+#casa6 {
+    background-image: url(images/casa6.png);
+}
+
+#casa7 {
+    background-image: url(images/casa7.png);
+}
+
+#casa8 {
+    background-image: url(images/casa8.png);
+}
+
+#casa9 {
+    background-image: url(images/casa9.png);
+}
