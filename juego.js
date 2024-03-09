@@ -1,4 +1,5 @@
 var inicio = new Date();
+console.log("Fecha de Inicio: "+inicio);
 
 var jugador=localStorage.getItem("jugador");
 jugador=JSON.parse(jugador);
@@ -73,16 +74,21 @@ function soltado(e){
 function calcularTiempo(){
     var fin = new Date();
     var tiempo = (fin-inicio)/1000;
+    console.log("Tiempo: "+tiempo);
 
     var jugador = localStorage.getItem("jugador");
     jugador = JSON.parse(jugador);
 
-    //Actualizar el tiempo en caso de que sea mejor del anterior
-    if(tiempo < jugador.tiempo){
+    console.log("Nombre: "+jugador.nombre);
+    console.log("Tiempo: "+jugador.tiempo);
+
+    if(tiempo < jugador.tiempo || jugador.tiempo===0){
+        console.log("Actualizando el tiempo...");
+
         var usuarios = localStorage.getItem("usuarios");
         usuarios = JSON.parse(usuarios);
 
-        var usuariosAux;
+        var usuariosAux = [];
         var usuarioAux;
 
         for(var i in usuarios){
@@ -103,12 +109,21 @@ function calcularTiempo(){
                     tiempo:tiempo
                 });
                 usuariosAux.push(usuarioAux);
+
+                localStorage.removeItem("jugador");
+                localStorage.setItem("jugador", usuarioAux);
             }
         }
+
         localStorage.removeItem("usuarios");
-        localStorage.setItem("usuarios", usuariosAux);
+        localStorage.setItem("usuarios", JSON.stringify(usuariosAux));
     }
 }
+
+document.getElementById("boton-salir").addEventListener("click", function(){
+    calcularTiempo();
+    //window.location.href = "index.html";
+});
 
 window.onload = function(){
     validar();

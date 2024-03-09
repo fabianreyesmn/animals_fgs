@@ -22,7 +22,7 @@ function registrar(){
                         puntaje:usuario.puntaje,
                         tiempo:usuario.tiempo  
                     });
-                    localStorage.setItem("jugador", JSON.stringify(datos));
+                    localStorage.setItem("jugador", datos);
                     break;
                 }
             }  
@@ -47,7 +47,7 @@ function alta(){
         });
         usuarios.push(usuario);
         localStorage.setItem("usuarios", JSON.stringify(usuarios));
-        localStorage.setItem("jugador", JSON.stringify(usuario));
+        localStorage.setItem("jugador", usuario);
     }
     window.location.href = "juego.html";
 }
