@@ -3,11 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla de Puntajes</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Mundo Salvaje: Misión Selva</title>
     <!-- Vincular con JavaScript -->
     <script src="puntajes.js" defer></script>
 </head>
-<body>
-    <table id="clasificacion"></table>
+<body id="puntajes">
+    <div class="caja-puntajes">
+        <table id="clasificacion"></table>
+    </div>
+
+    <div class="centrar-botones">
+        <input type="button" value="Regresar" onclick="inicio()">
+    </div>
+
+    <script>
+        function inicio(){
+            window.location.href = "index.html";
+        }
+    </script>
 </body>
 </html>

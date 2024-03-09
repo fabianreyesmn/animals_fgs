@@ -1,3 +1,7 @@
+*{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 #inicio{
     background: url("images/bg_inicio.jpg");
     background-repeat: no-repeat;
@@ -10,14 +14,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh;
+    min-height: 80vh;
     row-gap: 40px;
 }
 
 .brand h2{
     color: rgb(228, 224, 216);
     font-size: 1.5rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
 }
 
@@ -40,7 +43,6 @@ input[type="button"]{
     color: rgb(255, 255, 255);
     font-weight: bold;
     font-size: 1.1rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
 
@@ -57,28 +59,25 @@ input[type="button"]{
     align-items: center;
     justify-content: center;
     row-gap: 30px;
-    height: 80vh;
+    min-height: 80vh;
     padding-top: 100px;
     box-sizing: border-box;
 }
 
 .container-name label{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 2.5rem;
     font-weight: bold;
 }
 
 .container-name input{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 3rem;
     text-align: center;
     border-radius: 8px;
     border: 1px solid rgb(145, 145, 145);
-    background-color: rgba(205, 247, 156, 0.788);
+    background-color: rgba(247, 205, 156, 0.788);
 }
 
 .container-name p{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
 }
 
@@ -91,6 +90,80 @@ input[type="button"]{
 #div-audio > button {   
     height: 50px;
     width: 60px;
+    border-radius: 5px;
+    border: 2px solid rgb(117, 117, 117);
+    background-color: rgb(196, 36, 76);
+    color: white;
+}
+
+#puntajes{
+    background: url("images/bg_puntajes.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.caja-puntajes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+#clasificacion{
+    min-width: 600px;
+    padding: 20px;
+    font-size: 1.4rem;
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color: rgba(219, 172, 41, 0.712);
+    text-align: center;
+}
+
+#clasificacion th, #clasificacion td{
+    padding: 10px;
+}
+
+#juego{
+    background: url("images/bg_juego.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+.head-juego{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+#juego h1{
+    margin: 0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.87);
+    border-top: 0;
+    background-color: rgb(214, 126, 24);
+    text-align: center;
+    width: 700px;
+    color: rgb(223, 255, 202);
+}
+
+#casas, #imagenesAnimales{
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#casas{
+    min-height: 60vh;
+}
+
+#imagenesAnimales{
+    min-height: 20vh;
 }
 
 #casa1,
@@ -125,6 +198,7 @@ input[type="button"]{
 #casa9 {
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 50%;
 }
 
 #casa1 {
@@ -161,4 +235,8 @@ input[type="button"]{
 
 #casa9 {
     background-image: url(images/casa9.png);
+}
+
+input[type="button"]:hover{
+    cursor: pointer;
 }
