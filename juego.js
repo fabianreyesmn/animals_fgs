@@ -1,6 +1,16 @@
 var inicio = new Date();
 console.log("Fecha de Inicio: "+inicio);
 
+var escenarios=localStorage.getItem("escenarios");
+escenarios=JSON.parse(escenarios);
+var nuevoOrden=localStorage.getItem("reacomodo");
+nuevoOrden=JSON.parse(nuevoOrden);
+
+//Sonidos de Animales
+const sonidoAnimal1 = new Audio("media/animal"+(nuevoOrden[0] + 1)+".mp3");
+const sonidoAnimal2 = new Audio("media/animal"+(nuevoOrden[1] + 1)+".mp3");
+const sonidoAnimal3 = new Audio("media/animal"+(nuevoOrden[2] + 1)+".mp3");
+
 const audioError = new Audio("media/SonidoError.mp3");  
 var aciertos = 0;
 
@@ -20,9 +30,6 @@ function validar(){
 function juego(){
     var imagenesCasas = document.getElementById('casas');
     var imagenesAnimales = document.getElementById('imagenesAnimales');
-
-    var escenarios=localStorage.getItem("escenarios");
-    escenarios=JSON.parse(escenarios);
 
     soltar = ["soltar"+escenarios[0]+1, "soltar"+escenarios[1]+1, "soltar"+escenarios[2]+1];
     lienzo = ["lienzo"+escenarios[0]+1, "lienzo"+escenarios[1]+1, "lienzo"+escenarios[2]+1];
@@ -105,8 +112,6 @@ function soltado(e){
 
     var orden=localStorage.getItem("escenarios");
     orden=JSON.parse(orden);
-    var nuevoOrden=localStorage.getItem("reacomodo");
-    nuevoOrden=JSON.parse(nuevoOrden);
 
     var id = e.dataTransfer.getData('Text');
     var img = new Image();
@@ -119,14 +124,20 @@ function soltado(e){
             img.onload = function() {
                 lienzo[nuevoOrden[0]].drawImage(img, posX, posY);
                 if(soltarId == ("casa" + (nuevoOrden[0] + 1))){
-                    audioAnimal = new Audio("media/animal"+(nuevoOrden[0] + 1)+".mp3");  
-                    audioAnimal.play();
+                    //Reproducir sonido del animal
+                    sonidoAnimal1.play();
+                    sonidoAnimal2.pause();
+                    sonidoAnimal3.pause();
+
                     console.log("El animal: "+ (nuevoOrden[0] + 1)+" ha llegado a casa");
                     elemento.style.visibility = 'hidden';
                     aciertos++;
                 }
                 else{
                     audioError.play();
+                    if(!sonidoAnimal1.paused) sonidoAnimal1.pause();
+                    if(!sonidoAnimal2.paused) sonidoAnimal2.pause();
+                    if(!sonidoAnimal3.paused) sonidoAnimal3.pause();
                 }
             };
             break;
@@ -137,14 +148,20 @@ function soltado(e){
             img.onload = function() {
                 lienzo[nuevoOrden[1]].drawImage(img, posX, posY);
                 if(soltarId == ("casa" + (nuevoOrden[1] + 1))){
-                    audioAnimal = new Audio("media/animal"+(nuevoOrden[1] + 1)+".mp3");  
-                    audioAnimal.play();
+                    //Reproducir sonido del animal
+                    sonidoAnimal1.pause();
+                    sonidoAnimal2.play();
+                    sonidoAnimal3.pause();
+
                     console.log("El animal: "+ (nuevoOrden[1] + 1)+" ha llegado a casa");
                     elemento.style.visibility = 'hidden';
                     aciertos++;
                 }
                 else{
                     audioError.play();
+                    if(!sonidoAnimal1.paused) sonidoAnimal1.pause();
+                    if(!sonidoAnimal2.paused) sonidoAnimal2.pause();
+                    if(!sonidoAnimal3.paused) sonidoAnimal3.pause();
                 }
             };
             break;
@@ -155,14 +172,20 @@ function soltado(e){
             img.onload = function() {
                 lienzo[nuevoOrden[2]].drawImage(img, posX, posY);
                 if(soltarId == ("casa" + (nuevoOrden[2] + 1))){
-                    audioAnimal = new Audio("media/animal"+(nuevoOrden[2] + 1)+".mp3");  
-                    audioAnimal.play();
+                    //Reproducir sonido del animal
+                    sonidoAnimal1.pause();
+                    sonidoAnimal2.pause();
+                    sonidoAnimal3.play();
+
                     console.log("El animal: "+ (nuevoOrden[2] + 1)+" ha llegado a casa");
                     elemento.style.visibility = 'hidden';
                     aciertos++;
                 }
                 else{
                     audioError.play();
+                    if(!sonidoAnimal1.paused) sonidoAnimal1.pause();
+                    if(!sonidoAnimal2.paused) sonidoAnimal2.pause();
+                    if(!sonidoAnimal3.paused) sonidoAnimal3.pause();
                 }
             };
             break;
