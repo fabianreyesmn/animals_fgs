@@ -249,3 +249,81 @@ input[type="button"]:hover{
     color: white;
     margin: 0 20px;
 }
+
+#ganador{
+    background: url("images/bg_ganador.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+#txt-win{
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 10px;
+    background-color: rgba(252, 221, 45, 0.884);
+    color: black;
+    font-size: 3.5rem;
+    width: 500px;
+    text-align: center;
+}
+
+.mensaje{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#felicitacion{
+    padding: 60px;
+    margin: 80px 120px;
+    border-radius: 10px;
+    border: 2px solid black;
+    background-color: rgba(115, 181, 238, 0.836);
+    color: black;
+    font-size: 2rem;
+    text-align: center;
+}
+
+#creditos{
+    background: url("images/bg_registro.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+.datos-creditos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 5px;
+    border-radius: 95px;
+    border: 2px solid black;
+    background-color: rgba(230, 173, 88, 0.897);
+    color: rgb(6, 41, 46);
+    margin: 30px 150px;
+    padding: 25px;
+    font-size: 1.15em;
+}
+
+.tituloC{
+    font-weight: bold;
+}
+
+.datos-creditos li{
+    text-align: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.datos-creditos ul{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5px;
+}

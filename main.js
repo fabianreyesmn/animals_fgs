@@ -55,3 +55,7 @@ function alta(){
 function shuffle(arreglo){
     arreglo.sort(()=>Math.random()-0.5);
 }
+
+document.getElementById("boton-salir").addEventListener("click", function(){
+    window.location.href = "index.html";
+});

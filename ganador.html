@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="ganador.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <title>Mundo Salvaje: Misión Selva</title>
 </head>
-<body id="juego">
+<body id="ganador">
     <div class="head-juego">
-        <h1>Ganador</h1>
+        <h1 id="txt-win">Ganador</h1>
     </div>
+
+    <div class="mensaje"><p id="felicitacion"></p></div>
 
     <div class="centrar-botones">
         <input type="button" value="Volver al menú" onclick="salir()">
