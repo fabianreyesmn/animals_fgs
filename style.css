@@ -159,23 +159,14 @@ input[type="button"]{
 }
 
 #casas{
-    min-height: 60vh;
+    min-height: 50vh;
 }
 
 #imagenesAnimales{
     min-height: 20vh;
 }
 
-#casa1,
-#casa2,
-#casa3,
-#casa4,
-#casa5,
-#casa6,
-#casa7,
-#casa8,
-#casa9,
-#animal1,
+/* #animal1,
 #animal2,
 #animal3,
 #animal4,
@@ -184,8 +175,8 @@ input[type="button"]{
 #animal7,
 #animal8,
 #animal9 {
-    display: none;
-}
+    height: 100px;
+} */
 
 #casa1,
 #casa2,

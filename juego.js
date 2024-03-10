@@ -15,27 +15,53 @@ function validar(){
 }
 
 function juego(){
-    var imagenesCasas = document.querySelectorAll('#casas > canvas');
-    var imagenesAnimales = document.querySelectorAll('#imagenesAnimales > img');
+    var imagenesCasas = document.getElementById('casas');
+    var imagenesAnimales = document.getElementById('imagenesAnimales');
 
     var escenarios=localStorage.getItem("escenarios");
     escenarios=JSON.parse(escenarios);
 
     for(var i=0; i<3; i++){
-        imagenesCasas[ escenarios[i] ].style.display = 'block';
+        
+        var nuevaCasa = document.createElement("canvas");
+        var nuevoAnimal = document.createElement("img");
+
+        nuevaCasa.id = "casa" + (escenarios[i] + 1);
+        nuevaCasa.width = "250";
+        nuevaCasa.height = "250";
+
+        nuevoAnimal.id = "animal" + (escenarios[i] + 1);
+        nuevoAnimal.src = "images/animal" + (escenarios[i] + 1) + ".png";
+        nuevoAnimal.addEventListener('dragstart', arrastrado, false);
+        nuevoAnimal.addEventListener('dragend', finalizado, false);
+
+        imagenesCasas.appendChild(nuevaCasa);
+        imagenesAnimales.appendChild(nuevoAnimal);
+
+        /*imagenesCasas[ escenarios[i] ].style.display = 'block';
         imagenesAnimales[ escenarios[i] ].style.display = 'block';
 
         imagenesAnimales[ escenarios[i] ].addEventListener('dragstart', arrastrado, false);
-        imagenesAnimales[ escenarios[i] ].addEventListener('dragend', finalizado, false);
+        imagenesAnimales[ escenarios[i] ].addEventListener('dragend', finalizado, false);*/
     }
 
-    //Ayuda
-    //Prueba de Cambio
-    soltar = document.getElementById('casa6');
-    lienzo = soltar.getContext('2d');
-    soltar.addEventListener('dragenter', eventoEnter, false);
-    soltar.addEventListener('dragover', eventoOver, false);
-    soltar.addEventListener('drop', soltado, false);
+    soltar1 = document.getElementById('casa' + (escenarios[0] + 1));
+    lienzo1 = soltar1.getContext('2d');
+    soltar1.addEventListener('dragenter', eventoEnter, false);
+    soltar1.addEventListener('dragover', eventoOver, false);
+    soltar1.addEventListener('drop', soltado, false);
+
+    soltar2 = document.getElementById('casa' + (escenarios[1] + 1));
+    lienzo2 = soltar2.getContext('2d');
+    soltar2.addEventListener('dragenter', eventoEnter, false);
+    soltar2.addEventListener('dragover', eventoOver, false);
+    soltar2.addEventListener('drop', soltado, false);
+
+    soltar3 = document.getElementById('casa' + (escenarios[2] + 1));
+    lienzo3 = soltar3.getContext('2d');
+    soltar3.addEventListener('dragenter', eventoEnter, false);
+    soltar3.addEventListener('dragover', eventoOver, false);
+    soltar3.addEventListener('drop', soltado, false);
 }
 
 function eventoEnter(e){
@@ -62,13 +88,42 @@ function arrastrado(e){
 
 function soltado(e){
     e.preventDefault();
-    var id = e.dataTransfer.getData('Text');
-    var elemento = document.getElementById(id);
-    var posX = e.pageX - soltar.offsetLeft; //Coordenada X para el soltado
-    var posY = e.pageY - soltar.offsetTop; //Coordenada Y para el soltado
-    lienzo.drawImage(elemento, posX, posY);
 
-    elemento.style.visibility = 'hidden';
+    var orden=localStorage.getItem("escenarios");
+    orden=JSON.parse(orden);
+
+    var id = e.dataTransfer.getData('Text');
+    var img = new Image();
+    img.src = document.getElementById(id).src;
+    switch(id){
+        case ("animal" + (orden[0] + 1)):{
+            var posX = e.pageX - soltar1.offsetLeft; //Coordenada X para el soltado
+            var posY = e.pageY - soltar1.offsetTop; //Coordenada Y para el soltado
+            img.onload = function() {
+                lienzo1.drawImage(img, posX, posY, 100, 100);
+            };
+            elemento.style.visibility = 'hidden';
+            break;
+        }
+        case ("animal" + (orden[1] + 1)):{
+            var posX = e.pageX - soltar2.offsetLeft; //Coordenada X para el soltado
+            var posY = e.pageY - soltar2.offsetTop; //Coordenada Y para el soltado
+            img.onload = function() {
+                lienzo2.drawImage(img, posX, posY, 100, 100);
+            };
+            elemento.style.visibility = 'hidden';
+            break;
+        }
+        case ("animal" + (orden[2] + 1)):{
+            var posX = e.pageX - soltar3.offsetLeft; //Coordenada X para el soltado
+            var posY = e.pageY - soltar3.offsetTop; //Coordenada Y para el soltado
+            img.onload = function() {
+                lienzo3.drawImage(img, posX, posY, 100, 100);
+            };
+            elemento.style.visibility = 'hidden';
+            break;
+        }
+    }
 }
 
 function calcularTiempo(){
