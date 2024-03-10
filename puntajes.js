@@ -23,15 +23,18 @@ function mostrar() {
 
     for(var i=0; i<tiemposOrden.length; i++){
         var tiempo = tiemposOrden[i];
-        var usuariosConEsteTiempo = tiempos[tiempo];
 
-        for(var j=0; j<usuariosConEsteTiempo.length; j++) {
-            var usuario = usuariosConEsteTiempo[j];
-            tabla += "<tr>";
-            tabla += "<td>"+usuario.nombre+"</td>";
-            tabla += "<td>"+usuario.puntaje+"</td>";
-            tabla += "<td>"+usuario.tiempo+"</td>";
-            tabla += "</tr>";
+        if(tiempo != 0) {
+            var usuariosConEsteTiempo = tiempos[tiempo];
+
+            for(var j=0; j<usuariosConEsteTiempo.length; j++) {
+                var usuario = usuariosConEsteTiempo[j];
+                tabla += "<tr>";
+                tabla += "<td>"+usuario.nombre+"</td>";
+                tabla += "<td>"+usuario.puntaje+"</td>";
+                tabla += "<td>"+usuario.tiempo+" Segundos </td>";
+                tabla += "</tr>";
+            }
         }
     }
 
