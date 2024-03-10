@@ -1,6 +1,9 @@
 var inicio = new Date();
 console.log("Fecha de Inicio: "+inicio);
 
+const audioError = new Audio("media/SonidoError.mp3");  
+var aciertos = 0;
+
 var jugador=localStorage.getItem("jugador");
 jugador=JSON.parse(jugador);
 
@@ -108,14 +111,24 @@ function soltado(e){
     var id = e.dataTransfer.getData('Text');
     var img = new Image();
     img.src = document.getElementById(id).src;
+    var soltarId = e.target.id;
     switch(id){
         case ("animal" + (nuevoOrden[0] + 1)):{
             var posX = e.pageX - soltar[nuevoOrden[0]].offsetLeft; //Coordenada X para el soltado
             var posY = e.pageY - soltar[nuevoOrden[0]].offsetTop; //Coordenada Y para el soltado
             img.onload = function() {
                 lienzo[nuevoOrden[0]].drawImage(img, posX, posY);
+                if(soltarId == ("casa" + (nuevoOrden[0] + 1))){
+                    audioAnimal = new Audio("media/animal"+(nuevoOrden[0] + 1)+".mp3");  
+                    audioAnimal.play();
+                    console.log("El animal: "+ (nuevoOrden[0] + 1)+" ha llegado a casa");
+                    elemento.style.visibility = 'hidden';
+                    aciertos++;
+                }
+                else{
+                    audioError.play();
+                }
             };
-            elemento.style.visibility = 'hidden';
             break;
         }
         case ("animal" + (nuevoOrden[1] + 1)):{
@@ -123,8 +136,17 @@ function soltado(e){
             var posY = e.pageY - soltar[nuevoOrden[1]].offsetTop; //Coordenada Y para el soltado
             img.onload = function() {
                 lienzo[nuevoOrden[1]].drawImage(img, posX, posY);
+                if(soltarId == ("casa" + (nuevoOrden[1] + 1))){
+                    audioAnimal = new Audio("media/animal"+(nuevoOrden[1] + 1)+".mp3");  
+                    audioAnimal.play();
+                    console.log("El animal: "+ (nuevoOrden[1] + 1)+" ha llegado a casa");
+                    elemento.style.visibility = 'hidden';
+                    aciertos++;
+                }
+                else{
+                    audioError.play();
+                }
             };
-            elemento.style.visibility = 'hidden';
             break;
         }
         case ("animal" + (nuevoOrden[2] + 1)):{
@@ -132,8 +154,21 @@ function soltado(e){
             var posY = e.pageY - soltar[nuevoOrden[2]].offsetTop; //Coordenada Y para el soltado
             img.onload = function() {
                 lienzo[nuevoOrden[2]].drawImage(img, posX, posY);
+                if(soltarId == ("casa" + (nuevoOrden[2] + 1))){
+                    audioAnimal = new Audio("media/animal"+(nuevoOrden[2] + 1)+".mp3");  
+                    audioAnimal.play();
+                    console.log("El animal: "+ (nuevoOrden[2] + 1)+" ha llegado a casa");
+                    elemento.style.visibility = 'hidden';
+                    aciertos++;
+                }
+                else{
+                    audioError.play();
+                }
             };
-            elemento.style.visibility = 'hidden';
+            break;
+        }
+        default:{
+            console.log("Error");
             break;
         }
     }
@@ -188,9 +223,14 @@ function calcularTiempo(){
     }
 }
 
+function siguiente(){
+    if(aciertos == 3){
+        window.location.href = "juego2.html";
+    }
+}
+
 document.getElementById("boton-salir").addEventListener("click", function(){
-    calcularTiempo();
-    //window.location.href = "index.html";
+    window.location.href = "index.html";
 });
 
 window.onload = function(){

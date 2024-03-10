@@ -1,5 +1,4 @@
 var audioFondo;
-const audioError = new Audio("media/SonidoError.mp3");  
 var reproducirAudio = false;
 
 document.addEventListener("DOMContentLoaded", function() {

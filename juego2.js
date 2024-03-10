@@ -1,6 +1,7 @@
 var inicio = new Date();
 console.log("Fecha de Inicio: "+inicio);
 
+const audioError = new Audio("media/SonidoError.mp3");  
 var aciertos = 0;
 
 var jugador=localStorage.getItem("jugador");
@@ -118,8 +119,14 @@ function soltado(e){
             img.onload = function() {
                 lienzo[nuevoOrden[0]].drawImage(img, posX, posY);
                 if(soltarId == ("casa" + (nuevoOrden[0] + 1))){
+                    audioAnimal = new Audio("media/animal"+(nuevoOrden[0] + 1)+".mp3");  
+                    audioAnimal.play();
+                    console.log("El animal: "+ (nuevoOrden[0] + 1)+" ha llegado a casa");
                     elemento.style.visibility = 'hidden';
                     aciertos++;
+                }
+                else{
+                    audioError.play();
                 }
             };
             break;
@@ -130,8 +137,14 @@ function soltado(e){
             img.onload = function() {
                 lienzo[nuevoOrden[1]].drawImage(img, posX, posY);
                 if(soltarId == ("casa" + (nuevoOrden[1] + 1))){
+                    audioAnimal = new Audio("media/animal"+(nuevoOrden[1] + 1)+".mp3");  
+                    audioAnimal.play();
+                    console.log("El animal: "+ (nuevoOrden[1] + 1)+" ha llegado a casa");
                     elemento.style.visibility = 'hidden';
                     aciertos++;
+                }
+                else{
+                    audioError.play();
                 }
             };
             break;
@@ -142,10 +155,20 @@ function soltado(e){
             img.onload = function() {
                 lienzo[nuevoOrden[2]].drawImage(img, posX, posY);
                 if(soltarId == ("casa" + (nuevoOrden[2] + 1))){
+                    audioAnimal = new Audio("media/animal"+(nuevoOrden[2] + 1)+".mp3");  
+                    audioAnimal.play();
+                    console.log("El animal: "+ (nuevoOrden[2] + 1)+" ha llegado a casa");
                     elemento.style.visibility = 'hidden';
                     aciertos++;
                 }
+                else{
+                    audioError.play();
+                }
             };
+            break;
+        }
+        default:{
+            console.log("Error");
             break;
         }
     }
