@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="juego.js" defer></script>
     <title>Mundo Salvaje: Misión Selva</title>
 </head>
 <body id="juego">
     <div class="head-juego">
-        <h1>Lleva a los animales a su casa</h1>
+        <h1>Ganador</h1>
     </div>
-    <section id="casas"></section>
-
-    <section id="imagenesAnimales"></section>
 
     <div class="centrar-botones">
-        <input type="button" value="Siguiente" onclick="siguiente()">
+        <input type="button" value="Volver al menú" onclick="salir()">
     </div>
 
-    <button id="boton-salir"></button>
+    <script>
+        function salir(){
+            window.location.href = "index.html";
+        }
+    </script>
 </body>
 </html>

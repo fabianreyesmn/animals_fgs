@@ -23,14 +23,14 @@ function juego(){
     var escenarios=localStorage.getItem("escenarios");
     escenarios=JSON.parse(escenarios);
 
-    soltar = ["soltar"+escenarios[0]+1, "soltar"+escenarios[1]+1, "soltar"+escenarios[2]+1];
-    lienzo = ["lienzo"+escenarios[0]+1, "lienzo"+escenarios[1]+1, "lienzo"+escenarios[2]+1];
+    soltar = ["soltar"+escenarios[3]+1, "soltar"+escenarios[4]+1, "soltar"+escenarios[5]+1];
+    lienzo = ["lienzo"+escenarios[3]+1, "lienzo"+escenarios[4]+1, "lienzo"+escenarios[5]+1];
 
-    var reacomodo = [escenarios[0], escenarios[1], escenarios[2]];
+    var reacomodo = [escenarios[3], escenarios[4], escenarios[5]];
     shuffle(reacomodo);
     localStorage.setItem("reacomodo", JSON.stringify(reacomodo));
 
-    for(var i=0; i<3; i++){
+    for(var i=3; i<6; i++){
         
         var nuevaCasa = document.createElement("canvas");
         var nuevoAnimal = document.createElement("img");
@@ -39,8 +39,8 @@ function juego(){
         nuevaCasa.width = "300";
         nuevaCasa.height = "200";
 
-        nuevoAnimal.id = "animal" + (reacomodo[i] + 1);
-        nuevoAnimal.src = "images/animal" + (reacomodo[i] + 1) + ".png";
+        nuevoAnimal.id = "animal" + (reacomodo[i-3] + 1);
+        nuevoAnimal.src = "images/animal" + (reacomodo[i-3] + 1) + ".png";
         nuevoAnimal.addEventListener('dragstart', arrastrado, false);
         nuevoAnimal.addEventListener('dragend', finalizado, false);
 
@@ -54,23 +54,23 @@ function juego(){
         imagenesAnimales[ escenarios[i] ].addEventListener('dragend', finalizado, false);*/
     }
 
-    soltar[escenarios[0]] = document.getElementById('casa' + (escenarios[0] + 1));
-    lienzo[escenarios[0]] = soltar[escenarios[0]].getContext('2d');
-    soltar[escenarios[0]].addEventListener('dragenter', eventoEnter, false);
-    soltar[escenarios[0]].addEventListener('dragover', eventoOver, false);
-    soltar[escenarios[0]].addEventListener('drop', soltado, false);
+    soltar[escenarios[3]] = document.getElementById('casa' + (escenarios[3] + 1));
+    lienzo[escenarios[3]] = soltar[escenarios[3]].getContext('2d');
+    soltar[escenarios[3]].addEventListener('dragenter', eventoEnter, false);
+    soltar[escenarios[3]].addEventListener('dragover', eventoOver, false);
+    soltar[escenarios[3]].addEventListener('drop', soltado, false);
 
-    soltar[escenarios[1]] = document.getElementById('casa' + (escenarios[1] + 1));
-    lienzo[escenarios[1]] = soltar[escenarios[1]].getContext('2d');
-    soltar[escenarios[1]].addEventListener('dragenter', eventoEnter, false);
-    soltar[escenarios[1]].addEventListener('dragover', eventoOver, false);
-    soltar[escenarios[1]].addEventListener('drop', soltado, false);
+    soltar[escenarios[4]] = document.getElementById('casa' + (escenarios[4] + 1));
+    lienzo[escenarios[4]] = soltar[escenarios[4]].getContext('2d');
+    soltar[escenarios[4]].addEventListener('dragenter', eventoEnter, false);
+    soltar[escenarios[4]].addEventListener('dragover', eventoOver, false);
+    soltar[escenarios[4]].addEventListener('drop', soltado, false);
 
-    soltar[escenarios[2]] = document.getElementById('casa' + (escenarios[2] + 1));
-    lienzo[escenarios[2]] = soltar[escenarios[2]].getContext('2d');
-    soltar[escenarios[2]].addEventListener('dragenter', eventoEnter, false);
-    soltar[escenarios[2]].addEventListener('dragover', eventoOver, false);
-    soltar[escenarios[2]].addEventListener('drop', soltado, false);
+    soltar[escenarios[5]] = document.getElementById('casa' + (escenarios[5] + 1));
+    lienzo[escenarios[5]] = soltar[escenarios[5]].getContext('2d');
+    soltar[escenarios[5]].addEventListener('dragenter', eventoEnter, false);
+    soltar[escenarios[5]].addEventListener('dragover', eventoOver, false);
+    soltar[escenarios[5]].addEventListener('drop', soltado, false);
 }
 
 function shuffle(arreglo){
@@ -200,9 +200,10 @@ function calcularTiempo(){
     }
 }
 
-function siguiente(){
+function terminar(){
     if(aciertos == 3){
-        window.location.href = "juego2.html";
+        calcularTiempo();
+        window.location.href = "ganador.html";
     }
 }
 
