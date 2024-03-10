@@ -27,8 +27,8 @@ function juego(){
         var nuevoAnimal = document.createElement("img");
 
         nuevaCasa.id = "casa" + (escenarios[i] + 1);
-        nuevaCasa.width = "250";
-        nuevaCasa.height = "250";
+        nuevaCasa.width = "300";
+        nuevaCasa.height = "200";
 
         nuevoAnimal.id = "animal" + (escenarios[i] + 1);
         nuevoAnimal.src = "images/animal" + (escenarios[i] + 1) + ".png";
@@ -100,7 +100,7 @@ function soltado(e){
             var posX = e.pageX - soltar1.offsetLeft; //Coordenada X para el soltado
             var posY = e.pageY - soltar1.offsetTop; //Coordenada Y para el soltado
             img.onload = function() {
-                lienzo1.drawImage(img, posX, posY, 100, 100);
+                lienzo1.drawImage(img, posX, posY);
             };
             elemento.style.visibility = 'hidden';
             break;
@@ -109,7 +109,7 @@ function soltado(e){
             var posX = e.pageX - soltar2.offsetLeft; //Coordenada X para el soltado
             var posY = e.pageY - soltar2.offsetTop; //Coordenada Y para el soltado
             img.onload = function() {
-                lienzo2.drawImage(img, posX, posY, 100, 100);
+                lienzo2.drawImage(img, posX, posY);
             };
             elemento.style.visibility = 'hidden';
             break;
@@ -118,7 +118,7 @@ function soltado(e){
             var posX = e.pageX - soltar3.offsetLeft; //Coordenada X para el soltado
             var posY = e.pageY - soltar3.offsetTop; //Coordenada Y para el soltado
             img.onload = function() {
-                lienzo3.drawImage(img, posX, posY, 100, 100);
+                lienzo3.drawImage(img, posX, posY);
             };
             elemento.style.visibility = 'hidden';
             break;

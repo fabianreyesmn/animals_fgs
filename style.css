@@ -164,6 +164,10 @@ input[type="button"]{
 
 #imagenesAnimales{
     min-height: 20vh;
+    border-radius: 5px;
+    border-top: 5px solid rgb(235, 235, 52);
+    border-bottom: 5px solid rgb(235, 235, 52);
+    background-color: rgba(139, 73, 34, 0.973);
 }
 
 /* #animal1,
@@ -188,44 +192,46 @@ input[type="button"]{
 #casa8,
 #casa9 {
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
-    border-radius: 50%;
+    border-radius: 50px;
+    border: 4px solid rgb(160, 224, 11);
 }
 
 #casa1 {
-    background-image: url(images/casa1.png);
+    background-image: url(images/casa1.jpg);
 }
 
 #casa2 {
-    background-image: url(images/casa2.png);
+    background-image: url(images/casa2.jpg);
 }
 
 #casa3 {
-    background-image: url(images/casa3.png);
+    background-image: url(images/casa3.jpg);
 }
 
 #casa4 {
-    background-image: url(images/casa4.png);
+    background-image: url(images/casa4.jpg);
 }
 
 #casa5 {
-    background-image: url(images/casa5.png);
+    background-image: url(images/casa5.jpg);
 }
 
 #casa6 {
-    background-image: url(images/casa6.png);
+    background-image: url(images/casa6.jpg);
 }
 
 #casa7 {
-    background-image: url(images/casa7.png);
+    background-image: url(images/casa7.jpg);
 }
 
 #casa8 {
-    background-image: url(images/casa8.png);
+    background-image: url(images/casa8.jpg);
 }
 
 #casa9 {
-    background-image: url(images/casa9.png);
+    background-image: url(images/casa9.jpg);
 }
 
 input[type="button"]:hover{
