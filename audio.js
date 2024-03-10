@@ -1,7 +1,18 @@
-const audioMenu = new Audio("media/SonidoMenu_JungleWildlife.mp3"); 
-const audioJuego = new Audio("media/SonidoJuego_Guinea.mp3"); 
+var audioFondo;
 const audioError = new Audio("media/SonidoError.mp3");  
 var reproducirAudio = false;
+
+document.addEventListener("DOMContentLoaded", function() {
+    var htmlFile = document.querySelector('script[data-html-file]').getAttribute('data-html-file');
+    console.log("El archivo HTML que llama a archivo.js es:", htmlFile);
+
+    if(htmlFile === "index.html" || htmlFile === "registro.html"){
+        audioFondo = new Audio("media/SonidoMenu_JungleWildlife.mp3"); 
+    }
+    else if(htmlFile === "juego.html" || htmlFile === "juego2.html"){
+        audioFondo = new Audio("media/SonidoJuego_Guinea.mp3"); 
+    }
+});
 
 console.log("Creando Botón");
 var boton = document.createElement("button"); 
@@ -11,12 +22,12 @@ document.getElementById("div-audio").appendChild(boton);
 
 function reproducir() {
     console.log("Reproduciendo Música");
-    audioMenu.play();
+    audioFondo.play();
 }
 
 function pausar() {
     console.log("Pausando Música");
-    audioMenu.pause();
+    audioFondo.pause();
 }
 
 document.getElementById("boton-audio").addEventListener("click", function(){

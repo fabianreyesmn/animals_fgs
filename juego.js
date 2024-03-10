@@ -207,7 +207,6 @@ function siguiente(){
 }
 
 document.getElementById("boton-salir").addEventListener("click", function(){
-    calcularTiempo();
     window.location.href = "index.html";
 });
 
