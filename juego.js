@@ -21,6 +21,13 @@ function juego(){
     var escenarios=localStorage.getItem("escenarios");
     escenarios=JSON.parse(escenarios);
 
+    soltar = ["soltar"+escenarios[0]+1, "soltar"+escenarios[1]+1, "soltar"+escenarios[2]+1];
+    lienzo = ["lienzo"+escenarios[0]+1, "lienzo"+escenarios[1]+1, "lienzo"+escenarios[2]+1];
+
+    var reacomodo = [escenarios[0], escenarios[1], escenarios[2]];
+    shuffle(reacomodo);
+    localStorage.setItem("reacomodo", JSON.stringify(reacomodo));
+
     for(var i=0; i<3; i++){
         
         var nuevaCasa = document.createElement("canvas");
@@ -30,8 +37,8 @@ function juego(){
         nuevaCasa.width = "300";
         nuevaCasa.height = "200";
 
-        nuevoAnimal.id = "animal" + (escenarios[i] + 1);
-        nuevoAnimal.src = "images/animal" + (escenarios[i] + 1) + ".png";
+        nuevoAnimal.id = "animal" + (reacomodo[i] + 1);
+        nuevoAnimal.src = "images/animal" + (reacomodo[i] + 1) + ".png";
         nuevoAnimal.addEventListener('dragstart', arrastrado, false);
         nuevoAnimal.addEventListener('dragend', finalizado, false);
 
@@ -45,23 +52,27 @@ function juego(){
         imagenesAnimales[ escenarios[i] ].addEventListener('dragend', finalizado, false);*/
     }
 
-    soltar1 = document.getElementById('casa' + (escenarios[0] + 1));
-    lienzo1 = soltar1.getContext('2d');
-    soltar1.addEventListener('dragenter', eventoEnter, false);
-    soltar1.addEventListener('dragover', eventoOver, false);
-    soltar1.addEventListener('drop', soltado, false);
+    soltar[escenarios[0]] = document.getElementById('casa' + (escenarios[0] + 1));
+    lienzo[escenarios[0]] = soltar[escenarios[0]].getContext('2d');
+    soltar[escenarios[0]].addEventListener('dragenter', eventoEnter, false);
+    soltar[escenarios[0]].addEventListener('dragover', eventoOver, false);
+    soltar[escenarios[0]].addEventListener('drop', soltado, false);
 
-    soltar2 = document.getElementById('casa' + (escenarios[1] + 1));
-    lienzo2 = soltar2.getContext('2d');
-    soltar2.addEventListener('dragenter', eventoEnter, false);
-    soltar2.addEventListener('dragover', eventoOver, false);
-    soltar2.addEventListener('drop', soltado, false);
+    soltar[escenarios[1]] = document.getElementById('casa' + (escenarios[1] + 1));
+    lienzo[escenarios[1]] = soltar[escenarios[1]].getContext('2d');
+    soltar[escenarios[1]].addEventListener('dragenter', eventoEnter, false);
+    soltar[escenarios[1]].addEventListener('dragover', eventoOver, false);
+    soltar[escenarios[1]].addEventListener('drop', soltado, false);
 
-    soltar3 = document.getElementById('casa' + (escenarios[2] + 1));
-    lienzo3 = soltar3.getContext('2d');
-    soltar3.addEventListener('dragenter', eventoEnter, false);
-    soltar3.addEventListener('dragover', eventoOver, false);
-    soltar3.addEventListener('drop', soltado, false);
+    soltar[escenarios[2]] = document.getElementById('casa' + (escenarios[2] + 1));
+    lienzo[escenarios[2]] = soltar[escenarios[2]].getContext('2d');
+    soltar[escenarios[2]].addEventListener('dragenter', eventoEnter, false);
+    soltar[escenarios[2]].addEventListener('dragover', eventoOver, false);
+    soltar[escenarios[2]].addEventListener('drop', soltado, false);
+}
+
+function shuffle(arreglo){
+    arreglo.sort(()=>Math.random()-0.5);
 }
 
 function eventoEnter(e){
@@ -91,34 +102,36 @@ function soltado(e){
 
     var orden=localStorage.getItem("escenarios");
     orden=JSON.parse(orden);
+    var nuevoOrden=localStorage.getItem("reacomodo");
+    nuevoOrden=JSON.parse(nuevoOrden);
 
     var id = e.dataTransfer.getData('Text');
     var img = new Image();
     img.src = document.getElementById(id).src;
     switch(id){
-        case ("animal" + (orden[0] + 1)):{
-            var posX = e.pageX - soltar1.offsetLeft; //Coordenada X para el soltado
-            var posY = e.pageY - soltar1.offsetTop; //Coordenada Y para el soltado
+        case ("animal" + (nuevoOrden[0] + 1)):{
+            var posX = e.pageX - soltar[nuevoOrden[0]].offsetLeft; //Coordenada X para el soltado
+            var posY = e.pageY - soltar[nuevoOrden[0]].offsetTop; //Coordenada Y para el soltado
             img.onload = function() {
-                lienzo1.drawImage(img, posX, posY);
+                lienzo[nuevoOrden[0]].drawImage(img, posX, posY);
             };
             elemento.style.visibility = 'hidden';
             break;
         }
-        case ("animal" + (orden[1] + 1)):{
-            var posX = e.pageX - soltar2.offsetLeft; //Coordenada X para el soltado
-            var posY = e.pageY - soltar2.offsetTop; //Coordenada Y para el soltado
+        case ("animal" + (nuevoOrden[1] + 1)):{
+            var posX = e.pageX - soltar[nuevoOrden[1]].offsetLeft; //Coordenada X para el soltado
+            var posY = e.pageY - soltar[nuevoOrden[1]].offsetTop; //Coordenada Y para el soltado
             img.onload = function() {
-                lienzo2.drawImage(img, posX, posY);
+                lienzo[nuevoOrden[1]].drawImage(img, posX, posY);
             };
             elemento.style.visibility = 'hidden';
             break;
         }
-        case ("animal" + (orden[2] + 1)):{
-            var posX = e.pageX - soltar3.offsetLeft; //Coordenada X para el soltado
-            var posY = e.pageY - soltar3.offsetTop; //Coordenada Y para el soltado
+        case ("animal" + (nuevoOrden[2] + 1)):{
+            var posX = e.pageX - soltar[nuevoOrden[2]].offsetLeft; //Coordenada X para el soltado
+            var posY = e.pageY - soltar[nuevoOrden[2]].offsetTop; //Coordenada Y para el soltado
             img.onload = function() {
-                lienzo3.drawImage(img, posX, posY);
+                lienzo[nuevoOrden[2]].drawImage(img, posX, posY);
             };
             elemento.style.visibility = 'hidden';
             break;
