@@ -3,6 +3,11 @@ console.log("Fecha de Inicio: "+inicio);
 
 var escenarios=localStorage.getItem("escenarios");
 escenarios=JSON.parse(escenarios);
+
+var reacomodo = [escenarios[3], escenarios[4], escenarios[5]];
+shuffle(reacomodo);
+localStorage.setItem("reacomodo", JSON.stringify(reacomodo));
+
 var nuevoOrden=localStorage.getItem("reacomodo");
 nuevoOrden=JSON.parse(nuevoOrden);
 
@@ -33,10 +38,6 @@ function juego(){
 
     soltar = ["soltar"+escenarios[3]+1, "soltar"+escenarios[4]+1, "soltar"+escenarios[5]+1];
     lienzo = ["lienzo"+escenarios[3]+1, "lienzo"+escenarios[4]+1, "lienzo"+escenarios[5]+1];
-
-    var reacomodo = [escenarios[3], escenarios[4], escenarios[5]];
-    shuffle(reacomodo);
-    localStorage.setItem("reacomodo", JSON.stringify(reacomodo));
 
     for(var i=3; i<6; i++){
         
