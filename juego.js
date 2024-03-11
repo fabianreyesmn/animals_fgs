@@ -22,7 +22,7 @@ var aciertos = 0;
 
 var jugador=localStorage.getItem("jugador");
 jugador=JSON.parse(jugador);
-var puntos = 0;
+var puntos = parseInt(jugador.puntaje);
 
 function validar(){
     if(jugador!==null){
@@ -36,6 +36,8 @@ function validar(){
 }
 
 function juego(){
+    document.getElementById("puntos-juego").innerHTML = "⭐: " + puntos;
+
     var imagenesCasas = document.getElementById('casas');
     var nombres = document.getElementById('nombres');
     var imagenesAnimales = document.getElementById('imagenesAnimales');

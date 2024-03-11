@@ -23,7 +23,7 @@ var puntos = localStorage.getItem("puntos");
 puntos = JSON.parse(puntos);
 
 var jugador=localStorage.getItem("jugador");
-jugador=JSON.parse(jugador);
+jugador=parseInt(jugador);
 
 function validar(){
     if(jugador!==null){
@@ -314,6 +314,39 @@ function calcularTiempo(){
 
         localStorage.removeItem("usuarios");
         localStorage.setItem("usuarios", JSON.stringify(usuariosAux));
+    }else{
+        var usuarios = localStorage.getItem("usuarios");
+        usuarios = JSON.parse(usuarios);
+
+        var usuariosAux = [];
+        var usuarioAux;
+
+        for(var i in usuarios){
+            var usuario = JSON.parse(usuarios[i]);
+
+            if(jugador.nombre !== usuario.nombre){
+                var usuarioAux = JSON.stringify({ //El método stringify convierte un valor a notación JSON
+                    nombre:usuario.nombre, 
+                    puntaje:usuario.puntaje,
+                    tiempo:usuario.tiempo
+                });
+                usuariosAux.push(usuarioAux);
+            }
+            else{
+                var usuarioAux = JSON.stringify({ //El método stringify convierte un valor a notación JSON
+                    nombre:jugador.nombre, 
+                    puntaje:puntos,
+                    tiempo:jugador.tiempo
+                });
+                usuariosAux.push(usuarioAux);
+
+                localStorage.removeItem("jugador");
+                localStorage.setItem("jugador", usuarioAux);
+            }
+        }
+
+        localStorage.removeItem("usuarios");
+        localStorage.setItem("usuarios", JSON.stringify(usuariosAux));
     }
 }
 
@@ -321,7 +354,6 @@ function terminar(){
     if(aciertos == 3){
         calcularTiempo();
         localStorage.removeItem("segundosAcumulados");
-        localStorage.removeItem("puntos");
         window.location.href = "ganador.html";
     }
 }

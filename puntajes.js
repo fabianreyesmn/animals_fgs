@@ -6,7 +6,7 @@ console.log(usuarios);
 
 function mostrar() {
     document.getElementById("clasificacion").innerHTML = "";
-    var tabla = "<tr> <th>Nombre</th> <th>Puntaje</th> <th>Tiempo</th> </tr>";
+    var tabla = "<tr> <th>Nombre</th> <th>Puntaje</th> <th>Mejor tiempo</th> </tr>";
 
     for(var i in usuarios){
         var usuario = JSON.parse(usuarios[i]);
