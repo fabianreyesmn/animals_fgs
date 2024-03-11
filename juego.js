@@ -1,4 +1,5 @@
 var inicio = new Date();
+var segundosAcumulados = 0;
 console.log("Fecha de Inicio: "+inicio);
 
 var escenarios=localStorage.getItem("escenarios");
@@ -26,6 +27,7 @@ function validar(){
     if(jugador!==null){
         window.addEventListener('load', juego, false);
         juego();
+        cronometro();
     }
     else{
         window.location.replace("index.html");
@@ -249,6 +251,10 @@ function calcularTiempo(){
 
 function siguiente(){
     if(aciertos == 3){
+        //clearInterval(intervaloCronometro);
+        localStorage.removeItem("segundosAcumulados");
+        localStorage.setItem("segundosAcumulados", segundosAcumulados);
+        //console.log("Error aqui: "+parseInt(localStorage.getItem("segundosAcumulados")));
         window.location.href = "juego2.html";
     }
 }
@@ -256,6 +262,30 @@ function siguiente(){
 document.getElementById("boton-salir").addEventListener("click", function(){
     window.location.href = "index.html";
 });
+
+function cronometro() {
+    var div = document.getElementById('div-cronometro');
+    var tiempoInicio = new Date().getTime();
+
+    function actualizarCronometro() {
+        var ahora = new Date().getTime();
+        var tiempoTranscurrido = ahora - tiempoInicio;
+
+        var minutos = Math.floor((tiempoTranscurrido % (1000 * 60 * 60)) / (1000 * 60));
+        var segundos = Math.floor((tiempoTranscurrido % (1000 * 60)) / 1000);
+
+        segundosAcumulados = segundos;
+        console.log("Segundos acumulados: "+segundosAcumulados);
+
+        minutos = (minutos < 10) ? "0" + minutos : minutos;
+        segundos = (segundos < 10) ? "0" + segundos : segundos;
+
+        div.innerHTML = "<p>Cronómetro: "+minutos + ":" + segundos+"</p>";
+    }
+
+    //Actualiza el cronómetro cada segundo
+    setInterval(actualizarCronometro, 1000);
+}
 
 window.onload = function(){
     validar();

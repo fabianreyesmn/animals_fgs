@@ -327,3 +327,13 @@ input[type="button"]:hover{
     padding: 0;
     margin-bottom: 5px;
 }
+
+#div-cronometro {
+    position: fixed;
+    padding-left: 20px;
+}
+
+#div-cronometro > p {
+    font-size: 20px;
+    color: white;
+}

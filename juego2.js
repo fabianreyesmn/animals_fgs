@@ -1,5 +1,6 @@
 var inicio = new Date();
-console.log("Fecha de Inicio: "+inicio);
+var segundosAcumulados = parseInt(localStorage.getItem("segundosAcumulados"));
+console.log("Segundos Acumulados: "+segundosAcumulados);
 
 var escenarios=localStorage.getItem("escenarios");
 escenarios=JSON.parse(escenarios);
@@ -26,6 +27,7 @@ function validar(){
     if(jugador!==null){
         window.addEventListener('load', juego, false);
         juego();
+        cronometro();
     }
     else{
         window.location.replace("index.html");
@@ -200,7 +202,7 @@ function soltado(e){
 
 function calcularTiempo(){
     var fin = new Date();
-    var tiempo = (fin-inicio)/1000;
+    var tiempo = ((fin-inicio)/1000)+segundosAcumulados;
     console.log("Tiempo: "+tiempo);
 
     var jugador = localStorage.getItem("jugador");
@@ -250,13 +252,38 @@ function calcularTiempo(){
 function terminar(){
     if(aciertos == 3){
         calcularTiempo();
+        localStorage.removeItem("segundosAcumulados");
         window.location.href = "ganador.html";
     }
 }
 
 document.getElementById("boton-salir").addEventListener("click", function(){
     window.location.href = "index.html";
+    localStorage.removeItem("segundosAcumulados");
 });
+
+function cronometro() {
+    var div = document.getElementById('div-cronometro');
+    var tiempoInicio = new Date().getTime() - (segundosAcumulados * 1000); //Obtener la marca de tiempo actual
+
+    function actualizarCronometro() {
+
+        var ahora = new Date().getTime();
+        var tiempoTranscurrido = ahora - tiempoInicio;
+
+        var minutos = Math.floor((tiempoTranscurrido % (1000 * 60 * 60)) / (1000 * 60));
+        var segundos = Math.floor((tiempoTranscurrido % (1000 * 60)) / 1000);
+
+        minutos = (minutos < 10) ? "0" + minutos : minutos;
+        segundos = (segundos < 10) ? "0" + segundos : segundos;
+
+        div.innerHTML = "<p>Cronómetro: " + minutos + ":" + segundos + "</p>";
+    }
+
+    // Actualiza el cronómetro cada segundo
+    setInterval(actualizarCronometro, 1000);
+}
+
 
 window.onload = function(){
     validar();
