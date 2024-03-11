@@ -20,6 +20,7 @@ const sonidoAnimal3 = new Audio("media/animal"+(nuevoOrden[2] + 1)+".mp3");
 const audioError = new Audio("media/SonidoError.mp3");  
 var aciertos = 0;
 var puntos = localStorage.getItem("puntos");
+puntos = JSON.parse(puntos);
 
 var jugador=localStorage.getItem("jugador");
 jugador=JSON.parse(jugador);
@@ -36,6 +37,8 @@ function validar(){
 }
 
 function juego(){
+    document.getElementById("puntos-juego").innerHTML = "⭐: " + puntos;
+
     var imagenesCasas = document.getElementById('casas');
     var nombres = document.getElementById('nombres');
     var imagenesAnimales = document.getElementById('imagenesAnimales');
@@ -299,7 +302,7 @@ function calcularTiempo(){
             else{
                 var usuarioAux = JSON.stringify({ //El método stringify convierte un valor a notación JSON
                     nombre:jugador.nombre, 
-                    puntaje:jugador.puntaje,
+                    puntaje:puntos,
                     tiempo:tiempo
                 });
                 usuariosAux.push(usuarioAux);
@@ -318,6 +321,7 @@ function terminar(){
     if(aciertos == 3){
         calcularTiempo();
         localStorage.removeItem("segundosAcumulados");
+        localStorage.removeItem("puntos");
         window.location.href = "ganador.html";
     }
 }

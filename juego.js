@@ -19,10 +19,10 @@ const sonidoAnimal3 = new Audio("media/animal"+(nuevoOrden[2] + 1)+".mp3");
 
 const audioError = new Audio("media/SonidoError.mp3");  
 var aciertos = 0;
-var puntos = 0;
 
 var jugador=localStorage.getItem("jugador");
 jugador=JSON.parse(jugador);
+var puntos = 0;
 
 function validar(){
     if(jugador!==null){
