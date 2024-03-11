@@ -159,7 +159,7 @@ input[type="button"]{
 }
 
 #casas{
-    min-height: 50vh;
+    min-height: 45vh;
 }
 
 #imagenesAnimales{
@@ -248,6 +248,21 @@ input[type="button"]:hover{
     background-color: rgb(236, 43, 9);
     color: white;
     margin: 0 20px;
+}
+
+.abajo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+#puntos-juego{
+    font-size: 1.3rem;
+    margin: 0 30px;
+    padding: 0 20px;
+    color: white;
 }
 
 #ganador{
