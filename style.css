@@ -158,8 +158,17 @@ input[type="button"]{
     align-items: center;
 }
 
+#nombres{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
 #casas{
-    min-height: 45vh;
+    min-height: 35vh;
 }
 
 #imagenesAnimales{
@@ -232,6 +241,21 @@ input[type="button"]{
 
 #casa9 {
     background-image: url(images/casa9.jpg);
+}
+
+#nombre1, #nombre2, #nombre3, #nombre4, #nombre5, #nombre6, #nombre7, #nombre8, #nombre9{
+    background-color: rgb(139, 165, 121);
+    width: 300px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 25px;
+    border: 1px solid rgb(43, 24, 7);
+    color: rgb(43, 24, 7);
 }
 
 input[type="button"]:hover{
