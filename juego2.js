@@ -37,6 +37,7 @@ function validar(){
 
 function juego(){
     var imagenesCasas = document.getElementById('casas');
+    var nombres = document.getElementById('nombres');
     var imagenesAnimales = document.getElementById('imagenesAnimales');
 
     soltar = ["soltar"+escenarios[3]+1, "soltar"+escenarios[4]+1, "soltar"+escenarios[5]+1];
@@ -45,11 +46,53 @@ function juego(){
     for(var i=3; i<6; i++){
         
         var nuevaCasa = document.createElement("canvas");
+        var nuevoNombre = document.createElement("p");
         var nuevoAnimal = document.createElement("img");
 
         nuevaCasa.id = "casa" + (escenarios[i] + 1);
         nuevaCasa.width = "300";
         nuevaCasa.height = "200";
+
+        nuevoNombre.id = "nombre" + (escenarios[i] + 1);
+        nombres.appendChild(nuevoNombre);
+        switch(nuevoNombre.id){
+            case ("nombre1"):{
+                document.getElementById("nombre1").innerHTML = "Mono";
+                break;
+            }
+            case ("nombre2"):{
+                document.getElementById("nombre2").innerHTML = "Serpiente";
+                break;
+            }
+            case ("nombre3"):{
+                document.getElementById("nombre3").innerHTML = "Jaguar";
+                break;
+            }
+            case ("nombre4"):{
+                document.getElementById("nombre4").innerHTML = "Camaleón";
+                break;
+            }
+            case ("nombre5"):{
+                document.getElementById("nombre5").innerHTML = "Rana";
+                break;
+            }
+            case ("nombre6"):{
+                document.getElementById("nombre6").innerHTML = "Caimán";
+                break;
+            }
+            case ("nombre7"):{
+                document.getElementById("nombre7").innerHTML = "Jabalí";
+                break;
+            }
+            case ("nombre8"):{
+                document.getElementById("nombre8").innerHTML = "Araña";
+                break;
+            }
+            case ("nombre9"):{
+                document.getElementById("nombre9").innerHTML = "Guacamaya";
+                break;
+            }
+        }
 
         nuevoAnimal.id = "animal" + (reacomodo[i-3] + 1);
         nuevoAnimal.src = "images/animal" + (reacomodo[i-3] + 1) + ".png";
@@ -130,6 +173,7 @@ function soltado(e){
                 if(soltarId == ("casa" + (nuevoOrden[0] + 1))){
                     puntos += 3;
                     aciertos++;
+                    document.getElementById("nombre" + (nuevoOrden[0] + 1)).style.visibility = "visible";
                     document.getElementById("puntos-juego").innerHTML = "⭐: " + puntos;
                     localStorage.setItem("puntos", puntos);
                     //Reproducir sonido del animal
@@ -160,6 +204,7 @@ function soltado(e){
                 if(soltarId == ("casa" + (nuevoOrden[1] + 1))){
                     puntos += 3;
                     aciertos++;
+                    document.getElementById("nombre" + (nuevoOrden[1] + 1)).style.visibility = "visible";
                     document.getElementById("puntos-juego").innerHTML = "⭐: " + puntos;
                     localStorage.setItem("puntos", puntos);
                     //Reproducir sonido del animal
@@ -190,6 +235,7 @@ function soltado(e){
                 if(soltarId == ("casa" + (nuevoOrden[2] + 1))){
                     puntos += 3;
                     aciertos++;
+                    document.getElementById("nombre" + (nuevoOrden[2] + 1)).style.visibility = "visible";
                     document.getElementById("puntos-juego").innerHTML = "⭐: " + puntos;
                     localStorage.setItem("puntos", puntos);
                     //Reproducir sonido del animal
