@@ -18,6 +18,7 @@ const sonidoAnimal3 = new Audio("media/animal"+(nuevoOrden[2] + 1)+".mp3");
 
 const audioError = new Audio("media/SonidoError.mp3");  
 var aciertos = 0;
+var puntos = 0;
 
 var jugador=localStorage.getItem("jugador");
 jugador=JSON.parse(jugador);
@@ -125,6 +126,10 @@ function soltado(e){
             img.onload = function() {
                 lienzo[nuevoOrden[0]].drawImage(img, posX, posY);
                 if(soltarId == ("casa" + (nuevoOrden[0] + 1))){
+                    puntos += 3;
+                    aciertos++;
+                    document.getElementById("puntos-juego").innerHTML = "⭐: " + puntos;
+                    localStorage.setItem("puntos", puntos);
                     //Reproducir sonido del animal
                     sonidoAnimal1.play();
                     sonidoAnimal2.pause();
@@ -132,9 +137,11 @@ function soltado(e){
 
                     console.log("El animal: "+ (nuevoOrden[0] + 1)+" ha llegado a casa");
                     elemento.style.visibility = 'hidden';
-                    aciertos++;
                 }
                 else{
+                    puntos -= 2;
+                    document.getElementById("puntos-juego").innerHTML = "⭐: " + puntos;
+                    localStorage.setItem("puntos", puntos);
                     audioError.play();
                     if(!sonidoAnimal1.paused) sonidoAnimal1.pause();
                     if(!sonidoAnimal2.paused) sonidoAnimal2.pause();
@@ -149,6 +156,10 @@ function soltado(e){
             img.onload = function() {
                 lienzo[nuevoOrden[1]].drawImage(img, posX, posY);
                 if(soltarId == ("casa" + (nuevoOrden[1] + 1))){
+                    puntos += 3;
+                    aciertos++;
+                    document.getElementById("puntos-juego").innerHTML = "⭐: " + puntos;
+                    localStorage.setItem("puntos", puntos);
                     //Reproducir sonido del animal
                     sonidoAnimal1.pause();
                     sonidoAnimal2.play();
@@ -156,9 +167,11 @@ function soltado(e){
 
                     console.log("El animal: "+ (nuevoOrden[1] + 1)+" ha llegado a casa");
                     elemento.style.visibility = 'hidden';
-                    aciertos++;
                 }
                 else{
+                    puntos -= 2;
+                    document.getElementById("puntos-juego").innerHTML = "⭐: " + puntos;
+                    localStorage.setItem("puntos", puntos);
                     audioError.play();
                     if(!sonidoAnimal1.paused) sonidoAnimal1.pause();
                     if(!sonidoAnimal2.paused) sonidoAnimal2.pause();
@@ -173,6 +186,10 @@ function soltado(e){
             img.onload = function() {
                 lienzo[nuevoOrden[2]].drawImage(img, posX, posY);
                 if(soltarId == ("casa" + (nuevoOrden[2] + 1))){
+                    puntos += 3;
+                    aciertos++;
+                    document.getElementById("puntos-juego").innerHTML = "⭐: " + puntos;
+                    localStorage.setItem("puntos", puntos);
                     //Reproducir sonido del animal
                     sonidoAnimal1.pause();
                     sonidoAnimal2.pause();
@@ -180,9 +197,11 @@ function soltado(e){
 
                     console.log("El animal: "+ (nuevoOrden[2] + 1)+" ha llegado a casa");
                     elemento.style.visibility = 'hidden';
-                    aciertos++;
                 }
                 else{
+                    puntos -= 2;
+                    document.getElementById("puntos-juego").innerHTML = "⭐: " + puntos;
+                    localStorage.setItem("puntos", puntos);
                     audioError.play();
                     if(!sonidoAnimal1.paused) sonidoAnimal1.pause();
                     if(!sonidoAnimal2.paused) sonidoAnimal2.pause();
